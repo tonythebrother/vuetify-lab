@@ -15,8 +15,7 @@
     </v-main>
 
     <v-snackbar v-model="snackbar" :timeout="timeout">
-      {{ text }}
-
+      Hello World
       <template v-slot:action="{ attrs }">
         <v-btn color="blue" text v-bind="attrs" @click="snackbar = false">
           Close
@@ -28,12 +27,18 @@
 
 <script>
 export default {
-  props: ["email"],
   data: () => ({
     drawer: null,
-    snackbar: true,
-    text: "My timeout is set to 2000.",
-    timeout: 2000,
+    snackbar: null,
+    timeout: 1500,
   }),
+  mounted() {
+      if (localStorage.getItem('isOnline')) {
+          this.snackbar = true;
+      }
+      else {
+          this.$router.push('/')
+      }
+  }
 };
 </script>

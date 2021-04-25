@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import func from 'vue-editor-bridge';
 export default {
   data: () => ({
     pass: "",
@@ -56,11 +55,15 @@ export default {
   methods: {
     logIn() {
       if (this.$refs.form.validate()) {
-        this.$router.push({path: 'home', params: {userName: this.email}});
+        this.$router.push({path: 'home', params: {email: this.email}});
         window.localStorage.setItem('isOnline', true);
       }
     }
+  },
+  mounted() {
+      if (localStorage.getItem('isOnline')) {
+          this.$router.go(-1)
+      }
   }
-
 };
 </script>
