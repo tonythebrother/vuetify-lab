@@ -52,12 +52,12 @@ export default {
       if (this.$refs.form.validate()) {
         window.localStorage.setItem("isOnline", true);
         window.localStorage.setItem("email", this.email);
-        this.$router.push("/home");
+        this.$router.push("/home/billing");
       }
     },
   },
   mounted() {
-    if (this.isOnline) this.$router.push("/home");
+    if (this.isOnline) this.$router.push("/home/billing");
   },
 };
 </script>

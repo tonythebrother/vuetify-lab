@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer class="oculto-impresion" v-model="drawer" app>
-      <v-list-item to="/home">
+      <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title"> {{ email }} </v-list-item-title>
           <v-list-item-subtitle> Welcome </v-list-item-subtitle>
@@ -54,7 +54,7 @@ export default {
     isOnline: localStorage.getItem("isOnline"),
     email: localStorage.getItem("email"),
     items: [
-      { title: "Billing", icon: "mdi-printer", to: '/billing'},
+      { title: "Billing", icon: "mdi-printer", to: 'billing'},
     ],
   }),
   methods: {
