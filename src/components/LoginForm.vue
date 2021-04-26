@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row class="text-center">
-      <v-col> 
+      <v-col>
         <v-card class="pa-5 rounded-lg">
           <v-form ref="form" lazy-validation>
             <h1>Log In</h1>
@@ -22,11 +22,7 @@
               required
             ></v-text-field>
 
-            <v-btn
-              color="primary"
-              class="mr-4 mt-5"
-              @click="logIn"
-            >
+            <v-btn color="primary" class="mr-4 mt-5" @click="logIn">
               Log In
             </v-btn>
           </v-form>
@@ -42,28 +38,26 @@ export default {
     pass: "",
     passRules: [
       (v) => !!v || "Password is required",
-      (v) =>
-        (v && v.length >= 8) || "Password must have more than 10 characters",
     ],
     email: "",
     emailRules: [
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
     ],
+    isOnline: localStorage.getItem('isOnline')
   }),
 
   methods: {
     logIn() {
       if (this.$refs.form.validate()) {
-        this.$router.push({path: 'home', params: {email: this.email}});
-        window.localStorage.setItem('isOnline', true);
+        window.localStorage.setItem("isOnline", true);
+        window.localStorage.setItem("email", this.email);
+        this.$router.push("/home");
       }
-    }
+    },
   },
   mounted() {
-      if (localStorage.getItem('isOnline')) {
-          this.$router.go(-1)
-      }
-  }
+    if (this.isOnline) this.$router.push("/home");
+  },
 };
 </script>
