@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer class="oculto-impresion" v-model="drawer" app>
       <v-list-item to="/home">
         <v-list-item-content>
           <v-list-item-title class="title"> {{ email }} </v-list-item-title>
@@ -8,7 +8,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider ></v-divider>
 
       <v-list dense nav>
         <v-list-item v-for="item in items" :key="item.title" :to="item.to" link>
@@ -23,7 +23,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar class="oculto-impresion" app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
       <v-toolbar-title>My App</v-toolbar-title>
@@ -54,7 +54,7 @@ export default {
     isOnline: localStorage.getItem("isOnline"),
     email: localStorage.getItem("email"),
     items: [
-      { title: "Billing", icon: "mdi-printer", to: '/home/billing'},
+      { title: "Billing", icon: "mdi-printer", to: '/billing'},
     ],
   }),
   methods: {
